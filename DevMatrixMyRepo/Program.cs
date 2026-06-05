@@ -25,3 +25,6 @@ user.UserInfo();
 
 StudentsDetails students = new StudentsDetails("Odusina", "Tolulope", 30, "Computer Science", "400");
 students.StudentInfo();
+
+DataTypes data = new DataTypes();
+data.DataTypesInfo();
