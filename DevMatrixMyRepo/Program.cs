@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DevMatrixMyRepo;
+
 Console.WriteLine("Hello, World!");
 
 for (int i = 0; i <= 20; i++)
@@ -15,3 +17,8 @@ foreach (string name in names)
 {
     Console.WriteLine(name);
 }
+
+
+
+UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
+user.UserInfo();
