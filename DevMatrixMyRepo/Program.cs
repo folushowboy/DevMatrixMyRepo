@@ -29,4 +29,6 @@ using DevMatrixMyRepo;
 //DataTypes data = new DataTypes();
 //data.DataTypesInfo();
 
-Operators.OperatorsInfo();
+//Operators.OperatorsInfo();
+
+GuessGame.GuessGameApp();
