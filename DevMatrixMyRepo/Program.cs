@@ -29,4 +29,12 @@ using DevMatrixMyRepo;
 //DataTypes data = new DataTypes();
 //data.DataTypesInfo();
 
-Operators.OperatorsInfo();
+//Operators.OperatorsInfo();
+
+//Conditional condition = new Conditional();
+//condition.ConditionalIf();
+
+//Conditional.ConditionalSwitch();
+
+Conditional sales = new Conditional();
+sales.SaleApp();
