@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevMatrixMyRepo
-{
-    public class UserDetails
+namespace DevMatrixMyRepo  // namespace
+{ 
+    public class UserDetails // class
     {
-        public int Id;
-        public string UserName;
-        public int Age;
+        public int Id; // field
+        public string UserName; // field
+        public int Age; // field
 
-        public UserDetails(int id, string name, int age)
+        public UserDetails(int id, string name, int age) // constructor
         {
-            Id = id;
-            UserName = name;
-            Age = age;
+            Id = id; // assigning the value of the parameter to the field 
+            UserName = name; // assigning the value of the parameter to the field
+            Age = age; // assigning the value of the parameter to the field
         }
 
-        public void UserInfo()
+        public void UserInfo() // method
         {
             Console.WriteLine("User Id is {0}", Id);
             Console.WriteLine("User Name is {0}", UserName);
