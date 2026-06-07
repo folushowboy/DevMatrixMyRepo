@@ -20,15 +20,23 @@ using DevMatrixMyRepo;
 
 
 
-//UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
+UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
 //user.UserInfo();
+
 
 //StudentsDetails students = new StudentsDetails("Odusina", "Tolulope", 30, "Computer Science", "400");
 //students.StudentInfo();
 
+
 //DataTypes data = new DataTypes();
 //data.DataTypesInfo();
 
+
 //Operators.OperatorsInfo();
 
-GuessGame.GuessGameApp();
+
+//GuessGame.GuessGameApp();
+
+
+//CoffeeApp coffee = new CoffeeApp();
+//coffee.CoffeeGame();

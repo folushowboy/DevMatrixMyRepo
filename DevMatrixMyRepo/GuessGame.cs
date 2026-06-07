@@ -10,7 +10,6 @@ namespace DevMatrixMyRepo
     {
         public static void GuessGameApp()
         {
-            Console.WriteLine("This is a GuessGame App. Please Guess a number in three (3) attempts between 1 and 10");
             int randomNumber = new Random().Next(1, 11);
             Console.WriteLine($"The random number is {randomNumber}");
 
@@ -30,10 +29,12 @@ namespace DevMatrixMyRepo
                 {
                     Console.WriteLine("Congratulations. Your guess is correct");
                     break;
-                }else if (myGuess < randomNumber)
+                }
+                else if (myGuess < randomNumber)
                 {
                     Console.WriteLine("Your guess is too low. Try again!");
-                }else
+                }
+                else
                 {
                     Console.WriteLine("Your guess is too high. Try again!");
                 }
@@ -45,7 +46,7 @@ namespace DevMatrixMyRepo
                 }
             }
 
-           
+
         }
     }
 }
