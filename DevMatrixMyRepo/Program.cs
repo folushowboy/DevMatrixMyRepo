@@ -4,8 +4,12 @@ using DevMatrixMyRepo;
 Console.WriteLine("Hello, World!");
 
 
-ClassB inherit = new ClassB();
-inherit.Register();
 
-ClassC inher = new ClassC();
-inher.figures();
+Operators.OperatorsInfo();
+
+
+GuessGame.GuessGameApp();
+
+
+CoffeeApp coffee = new CoffeeApp();
+coffee.CoffeeGame();
