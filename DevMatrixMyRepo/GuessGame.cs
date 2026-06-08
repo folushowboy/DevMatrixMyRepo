@@ -23,6 +23,10 @@ namespace DevMatrixMyRepo
                 {
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 10");
                     continue;
+                } else if(myGuess > 10)
+                {
+                    Console.WriteLine("This number is not between 1 and 10. Please enter a number between 1 and 10");
+                    continue;
                 }
 
                 if (myGuess == randomNumber)
