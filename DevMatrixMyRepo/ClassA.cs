@@ -13,12 +13,12 @@ namespace DevMatrixMyRepo
 
         public void Click()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Plase Click me");
         }
 
         public void Migrate()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Plase Migrate me");
         }
 
         public void MyDetails()

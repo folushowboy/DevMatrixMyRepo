@@ -4,12 +4,8 @@ using DevMatrixMyRepo;
 Console.WriteLine("Hello, World!");
 
 
+ClassA resukt = new ClassA();
+resukt.MyDetails();
 
-Operators.OperatorsInfo();
-
-
-GuessGame.GuessGameApp();
-
-
-CoffeeApp coffee = new CoffeeApp();
-coffee.CoffeeGame();
+ClassB ans = new ClassB();
+ans.Click();
