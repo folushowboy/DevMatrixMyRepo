@@ -28,14 +28,14 @@ namespace DevMatrixMyRepo
 
 
 
-        //int Id;
-        //string UserName;
-        //int Age;
+        int Id;
+        string UserName;
+        int Age;
         public UserDetails(int id, string uname, int age)
         {
-            //id = id;
-            //UserName = uname;
-            //Age = age;
+            Id = id;
+            UserName = uname;
+            Age = age;
 
             Console.WriteLine($"ID: {id}");
             Console.WriteLine($"User Name: {uname}");

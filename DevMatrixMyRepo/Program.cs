@@ -20,7 +20,7 @@ using DevMatrixMyRepo;
 
 
 
-UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
+//UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
 //user.UserInfo();
 
 
@@ -40,3 +40,9 @@ UserDetails user = new UserDetails(1001, "Odusina Tolulope ", 25);
 
 //CoffeeApp coffee = new CoffeeApp();
 //coffee.CoffeeGame();
+
+ClassB inherit = new ClassB();
+inherit.Register();
+
+ClassC inher = new ClassC();
+inher.figures();
