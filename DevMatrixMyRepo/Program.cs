@@ -18,18 +18,5 @@ foreach (string name in names)
     Console.WriteLine(name);
 }
 
-DataTypes data = new DataTypes();
-data.DataTypesInfo();
-
-Operators.OperatorsInfo();
-
-Conditional condition = new Conditional();
-condition.ConditionalIf();
-
-Conditional.ConditionalSwitch();
-
-Conditional sales = new Conditional();
-sales.SaleApp();
-
 Loops arr = new Loops();
 arr.LoopsInfo();
