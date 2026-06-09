@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="DevMatrixMyRepo/DevMatrixMyRepo.csproj" />
+  <Project Path="ProjectA/ProjectA.csproj" Id="cf345b63-3a7d-46ac-bc98-30f587aeeccc" />
+  <Project Path="ProjectB/ProjectB.csproj" Id="7c97595e-d87e-47ba-9cfe-233878ed264b" />
 </Solution>
