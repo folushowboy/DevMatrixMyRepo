@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DevMatrixMyRepo
 {
 
-    public abstract class Colors
+    public abstract class Colors 
     {
         int x = 89;
         public string Name { get; set; }
@@ -18,5 +18,7 @@ namespace DevMatrixMyRepo
         }
 
        public abstract void UpdateColor(); // Abstract method
+
+        public abstract void DeleteColor(); 
     }
 }
