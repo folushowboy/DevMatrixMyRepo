@@ -14,7 +14,9 @@ namespace DevMatrixMyRepo
 
         public void DisplayColor()
         {
-            Console.WriteLine($"");
+            Console.WriteLine($"The color is {Name}");
         }
+
+       public abstract void UpdateColor(); // Abstract method
     }
 }
