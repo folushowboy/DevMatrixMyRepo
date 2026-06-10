@@ -14,6 +14,7 @@ namespace DevMatrixMyRepo
         long PhoneNumber;
         string Email;
 
+       
         public BankingSystem(string fname, string dob, string address, long phonenum, string email)
         {
             FullName = fname;
@@ -24,13 +25,14 @@ namespace DevMatrixMyRepo
         }
         public void CreateAcct()
         {
-            Console.WriteLine("Account has been created Successfully");
             Console.WriteLine($"FullName: {FullName}");
             Console.WriteLine($"Date Of Birth: {DOB}");
             Console.WriteLine($"Address: {Address}");
             Console.WriteLine($"Phone Number: {PhoneNumber}");
             Console.WriteLine($"Email: {Email}");
+            Console.WriteLine("Account has been created Successfully");
 
         }
+
     }
 }
