@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace DevMatrixMyRepo
 {
+
     public abstract class Colors
     {
+        int x = 89;
+        public string Name { get; set; }
+
+        public void DisplayColor()
+        {
+            Console.WriteLine($"");
+        }
     }
 }
