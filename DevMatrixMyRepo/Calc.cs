@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DevMatrixMyRepo
+﻿namespace DevMatrixMyRepo
 {
     internal class Calc
     {
@@ -14,7 +8,7 @@ namespace DevMatrixMyRepo
             Console.WriteLine(y);
         }
         public static void Add(double y, double x, double z)
-        { 
+        {
             var a = y + x + z;
             Console.WriteLine(a);
 
