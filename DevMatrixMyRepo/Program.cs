@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DevMatrixMyRepo;
+
 Console.WriteLine("Hello, World!");
 
-f
+MultiplicationGen multiply = new MultiplicationGen();
+multiply.MultiplyGen();

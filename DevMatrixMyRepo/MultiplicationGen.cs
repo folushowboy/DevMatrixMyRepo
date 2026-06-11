@@ -8,13 +8,18 @@ namespace DevMatrixMyRepo
 {
     internal class MultiplicationGen
     {
-        int myValue;
-        public void MultiplyGen(int x)
+        public void MultiplyGen()
         {
-            if(!int.TryParse(Console.ReadLine(), out myValue))
+            int number = int.Parse(Console.ReadLine());
+            MultiplyGenerate(number);
+        } 
+        public void MultiplyGenerate(int number)
+        {
+           for(int i = 1; i <= 12; i++)
             {
-                Console.WriteLine("Invalid input. Enter a number.");
+                Console.WriteLine($"{number} * {i} = {number * i}");
             }
+          
         }
     }
 }
