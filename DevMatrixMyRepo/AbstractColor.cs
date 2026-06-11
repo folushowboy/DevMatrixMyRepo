@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevMatrixMyRepo
 {
-    internal class AbstractColor : Pupils
+    internal class AbstractColor : Colors
     {
         public static void Add(int a, int b)
         {
@@ -25,15 +25,27 @@ namespace DevMatrixMyRepo
             Console.WriteLine(f);
 
         }
-        
-        public override void PupilType()
+
+        public override void DeleteColor()
         {
-            Console.WriteLine("Pupil Type Abstract");
+           int result = 20 * 10;
+            Console.WriteLine(result);
         }
 
-        public override void PupilValue()
+        //public override void PupilType()
+        //{
+        //    Console.WriteLine("Pupil Type Abstract");
+        //}
+
+        //public override void PupilValue()
+        //{
+        //    Console.WriteLine("Pupil Value Abstract");
+        //}
+
+        public override void UpdateColor(int x, int y)
         {
-            Console.WriteLine("Pupil Value Abstract");
+            int result = x * y;
+            Console.WriteLine(result);
         }
     }
 }

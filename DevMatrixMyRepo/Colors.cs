@@ -17,7 +17,7 @@ namespace DevMatrixMyRepo
             Console.WriteLine($"The color is {Name}");
         }
 
-       public abstract void UpdateColor(); // Abstract method
+       public abstract void UpdateColor(int x, int y); // Abstract method
 
         public abstract void DeleteColor(); 
     }
