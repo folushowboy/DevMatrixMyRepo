@@ -1,17 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DevMatrixMyRepo;
+
 Console.WriteLine("Hello, World!");
 
-for (int i = 0; i <= 20; i++)
-{
-    if (i % 2 == 0)
-    {
-        Console.WriteLine(i);
-    }
-}
+Console.WriteLine(BasicCalcGame.Multiply(2.23, 4.45, 68.9));
+Console.WriteLine(BasicCalcGame.Subtract(224, 445, 758));
 
+BasicCalcGame add = new BasicCalcGame();
+add.Add(323, 654, 876);
 
-string[] names = { "Genesis", "mathew", "exodus", "luke", "Samuel", "Mark", "Romans", "Titus", "Peter", "Jude", "Kings", "Ezekeil", "Moses", "Sarah", "Adam", "Eve", "Esther", "Obadiah", "Lamb", "Jesus" };
-foreach (string name in names)
-{
-    Console.WriteLine(name);
-}
+BasicCalcGame divide = new BasicCalcGame();
+Console.WriteLine( divide.Divide(23456, 5678, 7890));
