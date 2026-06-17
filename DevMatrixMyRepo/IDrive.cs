@@ -8,12 +8,11 @@ namespace DevMatrixMyRepo
 {
     public interface IDrive
     {
-        public static void DriveInfo()
-        {
-            string CarName;
-            string CarYear;
-            string CarColor;
-        }
-       
+        void CarName();
+
+        void CarYear();
+
+        void CarColor();
+
     }
 }
