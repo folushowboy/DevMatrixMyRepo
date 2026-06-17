@@ -9,3 +9,7 @@ Booleans.BooleanString();
 Conditionals.ConditionalIfElse();
 Loops.Loopings();
 Arrays.ArraysOperation();
+OOP oop = new OOP("Tolu", 30, "Chemistry science", "400L", "University of Lagos");
+oop.ShowDetails();
+InheritanceDerived.Derived();
+InheritanceDerived.
