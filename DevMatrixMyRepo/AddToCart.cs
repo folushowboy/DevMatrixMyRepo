@@ -1,95 +1,197 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DevMatrixMyRepo
 {
-    internal class AddToCart
+    public class AddToCart
     {
         public int Id { get; set; }
-        public string ItemName { get; set;}
-        public int ItemPrice { get; set;}
+        public string Name { get; set; }
+        public int price { get; set; }
 
-        public static void ViewProduct(List<AddToCart> items) 
+        public static void ViewProduct(List<AddToCart> products)
         {
-            Console.WriteLine("Welcome to the Add-To-Cart website. What would you like to order?");
-            Console.WriteLine("select your order by picking the order number ");
-
-            foreach(AddToCart item in items)
+            Console.WriteLine("Available Product");
+            foreach(AddToCart prd in products)
             {
-                Console.WriteLine($"{item.Id}, {item.ItemName}, {item.ItemPrice}");
+                Console.WriteLine($"{prd.Id}, {prd.Name}, {prd.price}");
             }
-
-            int price = 0;
-            string coffeName = "";
-            string answer = "YES";
-            while (answer == "YES")
-            {
-                if (!int.TryParse(Console.ReadLine(), out int UserChoice))
-                {
-                    Console.WriteLine("Invalid Input. Must be numbers");
-                    continue;
-                }
-                else if(UserChoice > 10)
-                {
-                    Console.WriteLine("Number is greater than the items we have. Choose between 1 and 10 to choose your order.");
-                }
-               
-                switch (UserChoice)
-                {
-                    case 1:
-                        coffeName = "BlackCoffee";
-                        price = 500;
-                        break;
-                    case 2:
-                        coffeName = "Espresso";
-                        price = 1500;
-                        break;
-                    case 3:
-                        coffeName = "Americano";
-                        price = 6000;
-                        break;
-                    case 4:
-                        coffeName = "Latte";
-                        price = 2000;
-                        break;
-                    case 5:
-                        coffeName = "Cappuccino";
-                        price = 3500;
-                        break;
-                    case 6:
-                        coffeName = "Macchiato";
-                        price = 2550;
-                        break;
-                    case 7:
-                        coffeName = "Mocha";
-                        price = 4250;
-                        break;
-                    case 8:
-                        coffeName = "Flat White ";
-                        price = 1500;
-                        break;
-                    case 9:
-                        coffeName = "Doppio";
-                        price = 2300;
-                        break;
-                    case 10:
-                        coffeName = "Affogato";
-                        price = 3400;
-                        break;
-                }
-                Console.WriteLine($"You picked {coffeName}");
-                Console.WriteLine("Do you still want to pick more item? YES/NO");
-                 answer = Console.ReadLine().ToUpper();
-                //int total = price 
-            }        
         }
 
-        public static void AddProductToCart(int UserChoice)
+        public static void AddProductToCart(List<AddToCart> products, List<AddToCart> cart)
         {
-            Console.WriteLine("Add to cart using the item ID");
-        } 
+            string question = "YES";
+            while (question == "YES")
+            {
+                Console.WriteLine("Enter Product Id to add to cart");
+                if(!int.TryParse(Console.ReadLine(), out int userChoice))
+                {
+                    Console.WriteLine("Invalid input. Must be numbers between 1 and 10");
+                    continue;
+                }
+
+                AddToCart selectedPrd = products.FirstOrDefault(p => p.Id == userChoice);
+                if(selectedPrd != null)
+                {
+                    cart.Add(selectedPrd);
+                    Console.WriteLine("{0} added to cart", selectedPrd.Name);
+                    Console.WriteLine("Wanna add more products to your cart? YES/N0");
+                    question = Console.ReadLine().ToUpper();
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Product not found");
+
+                }
+            }
+        }
+
+        public static void RemoveProductFromCart(List<AddToCart> products, List<AddToCart> cart)
+        {
+            string question = "YES";
+            while (question == "YES")
+            {
+                Console.WriteLine("Enter Product Id to remove from cart");
+                if (!int.TryParse(Console.ReadLine(), out int userChoice))
+                {
+                    Console.WriteLine("Invalid input. Must be numbers between 1 and 10");
+                }
+                if (cart.Count == 0)
+                {
+                    Console.WriteLine("Cart is empty");
+                    continue;
+                }
+                AddToCart removeprd = products.FirstOrDefault(r => r.Id == userChoice);
+                if(removeprd != null)
+                {
+                    cart.Remove(removeprd);
+                    Console.WriteLine($"{removeprd.Name} removed from cart");
+                    Console.WriteLine("Wanna add more products to your cart? YES/N0");
+                    question = Console.ReadLine().ToUpper();
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Product not found");
+                }
+            }
+
+        }
+
+        public static void ViewCart(List<AddToCart> products, List<AddToCart> cart)
+        {
+            while(true)
+            {
+                if (cart.Count == 0)
+                {
+                    Console.WriteLine("Cart is empty");
+                    continue;
+                }
+                decimal total = 0;
+
+                foreach(AddToCart prd in cart)
+                {
+                    Console.WriteLine($"{prd.Id}. {prd.Name} - ${prd.price}");
+                    total += prd.price;
+
+                    Console.WriteLine("---------------------------");
+                    Console.WriteLine($"Items: {cart.Count}");
+                    Console.WriteLine($"Total: ₦{total}");
+                    break;
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public int itemId { get; set; }
+        //public string ItemName { get; set; }
+        //public int ItemPrice { get; set; }
+        //public static void ViewProduct(List<AddToCart> products)
+        //{
+        //    Console.WriteLine("Welcome. What would you like to order?");
+        //    Console.WriteLine("Pick the Id to order.");
+        //    foreach (AddToCart prd in products)
+        //    {
+        //        Console.WriteLine($"{prd.itemId}, {prd.ItemName}, {prd.ItemPrice}");
+        //    }
+        //} 
+
+        //public static void AddProduct(List<AddToCart> products, List<AddToCart> cart)
+        //{
+        //    string userAns = "YES";
+        //    while (userAns == "YES")
+        //    {
+        //        Console.WriteLine("Enter Product Id: ");
+        //        if (!int.TryParse(Console.ReadLine(), out int userGuess))
+        //        {
+        //            Console.WriteLine("Invalid Input");
+        //            continue;
+        //        }
+        //        AddToCart selectedPrd = products.FirstOrDefault(item => item.itemId == userGuess); // To link the item Id to the userGuess, i.e when the user picks a number between 1 and 10 (Id) it displays the product in the number picked.
+        //        if(selectedPrd != null)
+        //        {
+        //            cart.Add(selectedPrd); //To add it to the cart
+        //            Console.WriteLine($"{selectedPrd.ItemName} added to cart."); // To print a message that te=he product has been added to the cart.
+        //            Console.WriteLine("Wanna add more products to cart? YES/NO");
+        //            userAns = Console.ReadLine().ToUpper();
+        //            continue;
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Product not found");
+        //        }
+        //    }
+        //}
     }
 }
