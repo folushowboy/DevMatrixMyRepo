@@ -15,65 +15,70 @@ namespace DevMatrixMyRepo
 
         public static void ViewProduct(List<AddToCart> products)
         {
-            Console.WriteLine("Available Product");
-            foreach(AddToCart prd in products)
+            Console.WriteLine("\n");
+            Console.WriteLine("Available Products\n");
+            foreach (AddToCart prd in products)
             {
-                Console.WriteLine($"{prd.Id}, {prd.Name}, {prd.price}");
+                Console.WriteLine($"{prd.Id}. {prd.Name}. {prd.price}");
             }
         }
 
         public static void AddProductToCart(List<AddToCart> products, List<AddToCart> cart)
         {
-            string question = "YES";
-            while (question == "YES")
+            Console.WriteLine("\n");
+            Console.WriteLine("Add to Cart\n");
+            Console.WriteLine("Enter Product Id to add to cart");
+            string UserAnswer = "Y";
+            while (UserAnswer == "Y")
             {
-                Console.WriteLine("Enter Product Id to add to cart");
-                if(!int.TryParse(Console.ReadLine(), out int userChoice))
+                if (!int.TryParse(Console.ReadLine(), out int UserChoice))
                 {
-                    Console.WriteLine("Invalid input. Must be numbers between 1 and 10");
+                    Console.WriteLine("Ivalid input. Number must be between 1 and 10");
                     continue;
                 }
-
-                AddToCart selectedPrd = products.FirstOrDefault(p => p.Id == userChoice);
-                if(selectedPrd != null)
+                AddToCart selectedProduct = products.FirstOrDefault(p => p.Id == UserChoice);
+                if (selectedProduct != null)
                 {
-                    cart.Add(selectedPrd);
-                    Console.WriteLine("{0} added to cart", selectedPrd.Name);
-                    Console.WriteLine("Wanna add more products to your cart? YES/N0");
-                    question = Console.ReadLine().ToUpper();
-                    continue;
+                    cart.Add(selectedProduct);
+                    Console.WriteLine($"{selectedProduct.Name} added to cart");
+                    Console.WriteLine("Add more product to cart? Y/N");
+                    UserAnswer = Console.ReadLine().ToUpper();
+
                 }
                 else
                 {
                     Console.WriteLine("Product not found");
-
                 }
             }
+
         }
 
         public static void RemoveProductFromCart(List<AddToCart> products, List<AddToCart> cart)
         {
-            string question = "YES";
-            while (question == "YES")
+            Console.WriteLine("\n");
+            Console.WriteLine("Remove from Cart\n");
+            Console.WriteLine("Enter Product Id to remove from from cart");
+            string userAnswer = "Y";
+            while (userAnswer == "Y")
             {
-                Console.WriteLine("Enter Product Id to remove from cart");
-                if (!int.TryParse(Console.ReadLine(), out int userChoice))
-                {
-                    Console.WriteLine("Invalid input. Must be numbers between 1 and 10");
-                }
                 if (cart.Count == 0)
                 {
                     Console.WriteLine("Cart is empty");
                     continue;
                 }
-                AddToCart removeprd = products.FirstOrDefault(r => r.Id == userChoice);
-                if(removeprd != null)
+                if (!int.TryParse(Console.ReadLine(), out int UserChoice))
                 {
-                    cart.Remove(removeprd);
-                    Console.WriteLine($"{removeprd.Name} removed from cart");
-                    Console.WriteLine("Wanna add more products to your cart? YES/N0");
-                    question = Console.ReadLine().ToUpper();
+                    Console.WriteLine("Ivalid input. Number must be between 1 and 10");
                     continue;
+                }
+                AddToCart removeProduct = products.FirstOrDefault(r => r.Id == UserChoice);
+                if (removeProduct != null)
+                {
+                    cart.Remove(removeProduct);
+                    Console.WriteLine($"{removeProduct.Name} removed from cart");
+                    Console.WriteLine($"Remove more products from cart? Y/N");
+                    userAnswer = Console.ReadLine().ToUpper();
+
                 }
                 else
                 {
@@ -83,115 +88,53 @@ namespace DevMatrixMyRepo
 
         }
 
-        public static void ViewCart(List<AddToCart> products, List<AddToCart> cart)
+        public static void ViewProduct(List<AddToCart> products, List<AddToCart> cart)
         {
-            while(true)
+            Console.WriteLine("\n");
+            Console.WriteLine("View Cart\n");
+            if (cart.Count == 0)
             {
-                if (cart.Count == 0)
-                {
-                    Console.WriteLine("Cart is empty");
-                    continue;
-                }
-                decimal total = 0;
-
-                foreach(AddToCart prd in cart)
-                {
-                    Console.WriteLine($"{prd.Id}. {prd.Name} - ${prd.price}");
-                    total += prd.price;
-
-                    Console.WriteLine("---------------------------");
-                    Console.WriteLine($"Items: {cart.Count}");
-                    Console.WriteLine($"Total: ₦{total}");
-                    break;
-                }
+                Console.WriteLine("Cart is empty");
+                return;
             }
+            decimal total = 0;
+
+            foreach (AddToCart prd in cart)
+            {
+                Console.WriteLine($"{prd.Name}. {prd.price}");
+                total += prd.price;
+
+            }
+            Console.WriteLine($"Items = {cart.Count}");
+            Console.WriteLine($"Total = {total}");
+        }
+
+        public static void CheckOut(List<AddToCart> products, List<AddToCart> cart)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("View Cart\n");
+            if (cart.Count == 0)
+            {
+                Console.WriteLine("Cart is empty");
+                return;
+            }
+            Console.WriteLine($"Proceed Checkout? Y/N");
+            string userAnswer = Console.ReadLine().ToUpper();
+
+            if (userAnswer == "Y")
+            {
+                Console.WriteLine("Payment Successful!");
+                Console.WriteLine("Thank you for shopping with us.");
+
+            }
+            else
+            {
+                Console.WriteLine("Checkout cancelled.");
+            }
+
 
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //public int itemId { get; set; }
-        //public string ItemName { get; set; }
-        //public int ItemPrice { get; set; }
-        //public static void ViewProduct(List<AddToCart> products)
-        //{
-        //    Console.WriteLine("Welcome. What would you like to order?");
-        //    Console.WriteLine("Pick the Id to order.");
-        //    foreach (AddToCart prd in products)
-        //    {
-        //        Console.WriteLine($"{prd.itemId}, {prd.ItemName}, {prd.ItemPrice}");
-        //    }
-        //} 
-
-        //public static void AddProduct(List<AddToCart> products, List<AddToCart> cart)
-        //{
-        //    string userAns = "YES";
-        //    while (userAns == "YES")
-        //    {
-        //        Console.WriteLine("Enter Product Id: ");
-        //        if (!int.TryParse(Console.ReadLine(), out int userGuess))
-        //        {
-        //            Console.WriteLine("Invalid Input");
-        //            continue;
-        //        }
-        //        AddToCart selectedPrd = products.FirstOrDefault(item => item.itemId == userGuess); // To link the item Id to the userGuess, i.e when the user picks a number between 1 and 10 (Id) it displays the product in the number picked.
-        //        if(selectedPrd != null)
-        //        {
-        //            cart.Add(selectedPrd); //To add it to the cart
-        //            Console.WriteLine($"{selectedPrd.ItemName} added to cart."); // To print a message that te=he product has been added to the cart.
-        //            Console.WriteLine("Wanna add more products to cart? YES/NO");
-        //            userAns = Console.ReadLine().ToUpper();
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Product not found");
-        //        }
-        //    }
-        //}
     }
 }

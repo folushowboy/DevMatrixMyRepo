@@ -17,11 +17,11 @@ listOfProducts.Add(new AddToCart { Id = 10, Name = "MeatPie", price = 2250 });
 
 List<AddToCart> cart = new List<AddToCart>();
 
-//AddToCart.ViewProduct(listOfProducts);
-//AddToCart.AddProductToCart(listOfProducts, cart);
-//AddToCart.RemoveProductFromCart(listOfProducts, cart);
-AddToCart.ViewCart(listOfProducts, cart);
-
+AddToCart.ViewProduct(listOfProducts);
+AddToCart.AddProductToCart(listOfProducts, cart);
+AddToCart.RemoveProductFromCart(listOfProducts, cart);
+AddToCart.ViewProduct(listOfProducts, cart);
+AddToCart.CheckOut(listOfProducts, cart);
 
 
 
