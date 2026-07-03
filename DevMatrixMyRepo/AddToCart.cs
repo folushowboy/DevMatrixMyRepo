@@ -53,6 +53,27 @@ namespace DevMatrixMyRepo
 
         }
 
+        public static void ViewCart(List<AddToCart> cart)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("Items in your Cart\n");
+            if (cart.Count == 0)
+            {
+                Console.WriteLine("Cart is empty");
+                return;
+            }
+            decimal total = 0;
+
+            foreach (AddToCart prd in cart)
+            {
+                Console.WriteLine($"{prd.Name}. {prd.price}");
+                total += prd.price;
+
+            }
+            Console.WriteLine($"Items = {cart.Count}");
+            Console.WriteLine($"Total = {total}");
+        }
+
         public static void RemoveProductFromCart(List<AddToCart> products, List<AddToCart> cart)
         {
             Console.WriteLine("\n");
@@ -88,27 +109,6 @@ namespace DevMatrixMyRepo
 
         }
 
-        public static void ViewProduct(List<AddToCart> products, List<AddToCart> cart)
-        {
-            Console.WriteLine("\n");
-            Console.WriteLine("View Cart\n");
-            if (cart.Count == 0)
-            {
-                Console.WriteLine("Cart is empty");
-                return;
-            }
-            decimal total = 0;
-
-            foreach (AddToCart prd in cart)
-            {
-                Console.WriteLine($"{prd.Name}. {prd.price}");
-                total += prd.price;
-
-            }
-            Console.WriteLine($"Items = {cart.Count}");
-            Console.WriteLine($"Total = {total}");
-        }
-
         public static void CheckOut(List<AddToCart> products, List<AddToCart> cart)
         {
             Console.WriteLine("\n");
@@ -125,7 +125,6 @@ namespace DevMatrixMyRepo
             {
                 Console.WriteLine("Payment Successful!");
                 Console.WriteLine("Thank you for shopping with us.");
-
             }
             else
             {

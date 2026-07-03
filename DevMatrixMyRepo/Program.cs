@@ -19,8 +19,9 @@ List<AddToCart> cart = new List<AddToCart>();
 
 AddToCart.ViewProduct(listOfProducts);
 AddToCart.AddProductToCart(listOfProducts, cart);
+AddToCart.ViewCart(cart);
 AddToCart.RemoveProductFromCart(listOfProducts, cart);
-AddToCart.ViewProduct(listOfProducts, cart);
+AddToCart.ViewCart(cart);
 AddToCart.CheckOut(listOfProducts, cart);
 
 
