@@ -67,7 +67,6 @@ stack.Push("e");
 
 
 
-
 //Methods in linq
 //Filtering e.g where
 //projection e.g select, selectmany
@@ -78,26 +77,34 @@ stack.Push("e");
 //aggregation methods
 //quatifiers
 
-//filtering
-List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-//Query Syntax
-var filterNum = from x in numbers
-                where x > 4  // filter
-                select x;
 
-foreach(var number in filterNum)
-{
-    //Console.WriteLine(number);
-}
+
+
+
+//Filtering
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 //method Syntax
-var filterNumb = numbers.Where(x => x > 7);
-foreach (var number in filterNumb)
+var highValues = numbers.Where(x => x > 4);
+foreach (var value in highValues)
 {
-    //Console.WriteLine(number);
+    //Console.WriteLine(value);
+
+}
+
+//query syntax
+
+var highVal = from x in numbers
+              where x > 4
+              select x;
+foreach (var value in highValues)
+{
+    //Console.WriteLine(value);
 }
 
 
+
+//Projection
 List<Students> student = new List<Students>
 {
     new Students { StudentId = 1 ,StudentName = "Ade", StudentAge = 20 },
@@ -109,168 +116,69 @@ List<Students> student = new List<Students>
     new Students { StudentId = 7 ,StudentName = "Sunmi", StudentAge = 33 },
     new Students { StudentId = 8 ,StudentName = "Bola", StudentAge = 21 },
     new Students { StudentId = 9 ,StudentName = "Ade", StudentAge = 45 },
+
 };
-
-
-//Projecting
-var projectNum = from x in student
-                     where x.StudentName.Length > 4
-                 select new { x.StudentName, x.StudentAge };
-foreach(var ans in projectNum)
+//query Syntax
+var result = from x in student
+                 //select x.StudentName; // to select just one data
+             select new { x.StudentId, x.StudentName }; // to select more than one data
+foreach (var value in result)
 {
-    //Console.WriteLine($"{ans.StudentName} && {ans.StudentAge}");
+    //Console.WriteLine($"{value.StudentId}. {value.StudentName}"); 
 }
+
+//Method Syntax
+var answer = student.Select(x => x.StudentName); // to selct just one data
+//var answer2 = student.Select( x => new { x.StudentName, x.StudentId}); // to select more than one data
+
+
 
 
 //Ordering
-var OrderStd = student.OrderByDescending(x => x.StudentAge).ThenBy(x => x.StudentId);
-foreach (var ans in OrderStd)
+//Method syntax
+var orderedStd = student.OrderBy(x => x.StudentAge).ThenBy(x => x.StudentName);
+
+foreach (var value in orderedStd)
 {
-    //Console.WriteLine($"{ans.StudentName} && {ans.StudentAge}");
+    Console.WriteLine($"{value.StudentName}. {value.StudentAge}");
 }
+//Query syntax
+var ordered = from x in student
+              orderby x.StudentName
+              select x;
+foreach (var value in orderedStd)
+{
+    //Console.WriteLine($"{value.StudentName}");
+}
+
 
 //setOperator
-List<int> Value1 = new List<int> { 1, 2, 3, 3, 4, 4, 5, 6, 7, 7, 8, 9, 9, 10 };
-List<int> Value2 = new List<int> { 1, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 11 };
+//Distincts is to eliminate duplicate values from a collection
+List<int> FirstDigit = new List<int> { 4, 4, 5, 6, 6, 7, 8, 1, 1, 9, 9, 10, 11 };
+List<int> SecondDigit = new List<int> { 1, 2, 3, 4, 5, 5, 6, 9, 9, 8, 10 };
 
-
-//Distinct
-var distVal = Value2.Except(Value1);
-foreach (var ans in distVal)
+var distincFirstDigit = FirstDigit.Distinct().Order();
+foreach (var digit in distincFirstDigit)
 {
-    Console.WriteLine(ans);
+    //Console.WriteLine($"{digit}");
 }
 
+//Intersect is to find a common element between two collection
+var intersectDigits = FirstDigit.Intersect(SecondDigit);
+foreach (var digit in intersectDigits)
+{
+    Console.WriteLine($"{digit}");
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////Filtering
-//List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-////method Syntax
-//var highValues = numbers.Where(x => x > 4);
-//foreach (var value in highValues)
-//{
-//    //Console.WriteLine(value);
-
-//}
-
-////query syntax
-
-//var highVal = from x in numbers
-//              where x > 4
-//              select x;
-//foreach (var value in highValues)
-//{
-//    //Console.WriteLine(value);
-//}
-
-
-
-////Projection
-//List<Students> student = new List<Students>
-//{
-//    new Students { StudentId = 1 ,StudentName = "Ade", StudentAge = 20 },
-//    new Students { StudentId = 2 ,StudentName = "Bola", StudentAge = 10 },
-//    new Students { StudentId = 3 ,StudentName = "Shade", StudentAge = 15 },
-//    new Students { StudentId = 4 ,StudentName = "Shayo", StudentAge = 14 },
-//    new Students { StudentId = 5 ,StudentName = "Sunmi", StudentAge = 34 },
-//    new Students { StudentId = 6 ,StudentName = "Debby", StudentAge = 28 },
-//    new Students { StudentId = 7 ,StudentName = "Sunmi", StudentAge = 33 },
-//    new Students { StudentId = 8 ,StudentName = "Bola", StudentAge = 21 },
-//    new Students { StudentId = 9 ,StudentName = "Ade", StudentAge = 45 },
-
-//};
-////query Syntax
-//var result = from x in student
-//                 //select x.StudentName; // to select just one data
-//             select new { x.StudentId, x.StudentName }; // to select more than one data
-//foreach(var value in result)
-//{
-//    //Console.WriteLine($"{value.StudentId}. {value.StudentName}"); 
-//}
-
-////Method Syntax
-//var answer = student.Select(x => x.StudentName); // to selct just one data
-////var answer2 = student.Select( x => new { x.StudentName, x.StudentId}); // to select more than one data
-
-
-
-
-////Ordering
-////Method syntax
-//var orderedStd = student.OrderBy(x => x.StudentAge).ThenBy(x => x.StudentName);
-
-//foreach(var value in orderedStd)
-//{
-//    Console.WriteLine($"{value.StudentName}. {value.StudentAge}");
-//}
-////Query syntax
-//var ordered = from x in student
-//              orderby x.StudentName
-//              select x;
-//foreach(var value in orderedStd)
-//{
-//    //Console.WriteLine($"{value.StudentName}");
-//}
-
-
-////setOperator
-////Distincts is to eliminate duplicate values from a collection
-//List<int> FirstDigit = new List<int> { 4, 4, 5, 6, 6, 7, 8, 1, 1, 9, 9, 10, 11 };
-//List<int> SecondDigit = new List<int> { 1, 2, 3, 4, 5, 5, 6, 9, 9, 8, 10 };
-
-//var distincFirstDigit = FirstDigit.Distinct().Order();
-//foreach(var digit in distincFirstDigit)
-//{
-//    //Console.WriteLine($"{digit}");
-//}
-
-////Intersect is to find a common element between two collection
-//var intersectDigits = FirstDigit.Intersect(SecondDigit);
-//foreach(var digit in intersectDigits)
-//{
-//    Console.WriteLine($"{digit}");
-//}
-
-////Union is to combine two collection into one collection
-//var unionDigits = FirstDigit.Union(SecondDigit);
-//foreach (var digit in intersectDigits)
-//{
-//    Console.WriteLine($"{digit}");
-//}
-////except is to find the element that are present in one collection but not in another
-//var exceptDigits = FirstDigit.Except(SecondDigit);
-//foreach (var digit in intersectDigits)
-//{
-//    Console.WriteLine($"{digit}");
-//}
+//Union is to combine two collection into one collection
+var unionDigits = FirstDigit.Union(SecondDigit);
+foreach (var digit in intersectDigits)
+{
+    Console.WriteLine($"{digit}");
+}
+//except is to find the element that are present in one collection but not in another
+var exceptDigits = FirstDigit.Except(SecondDigit);
+foreach (var digit in intersectDigits)
+{
+    Console.WriteLine($"{digit}");
+}
