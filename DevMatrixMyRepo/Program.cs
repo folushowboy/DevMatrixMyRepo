@@ -252,8 +252,13 @@ var allStd = student.All(c => c.StudentAge > 18);
 var anyStd = student.Any(c => c.StudentAge > 18);
 
 var newstd = new Students { StudentId = 6, StudentName = "Debby", StudentAge = 28 };
-bool containStd = student.Contains(newstd);
+
+var containStd = student.Any(s =>
+    s.StudentId == newstd.StudentId &&
+    s.StudentName == newstd.StudentName &&
+    s.StudentAge == newstd.StudentAge); 
 Console.WriteLine(containStd);
+
 
 
 
