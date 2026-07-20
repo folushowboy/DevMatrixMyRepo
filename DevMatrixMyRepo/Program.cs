@@ -1,17 +1,42 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
+// Asynchronous Programming
 
-for (int i = 0; i <= 20; i++)
+
+await LastProcess();
+await FirstProcess();
+//Synchronous Method
+static async Task FirstProcess()
 {
-    if (i % 2 == 0)
-    {
-        Console.WriteLine(i);
-    }
+    Console.WriteLine("Welcome to the first process");
+    Console.WriteLine("The first process is starting now......");
+    Console.WriteLine("The first process is completed.");
 }
 
-
-string[] names = { "Genesis", "mathew", "exodus", "luke", "Samuel", "Mark", "Romans", "Titus", "Peter", "Jude", "Kings", "Ezekeil", "Moses", "Sarah", "Adam", "Eve", "Esther", "Obadiah", "Lamb", "Jesus" };
-foreach (string name in names)
+//Asynchronous Method
+static async Task LastProcess()
 {
-    Console.WriteLine(name);
+    Console.WriteLine("Welcome to the Last process");
+    await Task.Delay(1000);
+    Console.WriteLine("The Last process is starting now......");
+    Console.WriteLine("The Last process is completed.");
+
+    //await DateReturnProcess(); // To call an asynchronous method it has to be in an asynchronous main method
+}
+
+static async void Last() // Same thing as Task
+{
+   
+}
+//Asynchronous DataType Method
+static async Task<bool> DateReturnProcess()
+{
+    return true;
+}
+
+//Synchronous DataType Method
+static bool DataProcess()
+{
+    return true;
+
 }
