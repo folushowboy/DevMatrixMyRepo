@@ -1,17 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-for (int i = 0; i <= 20; i++)
-{
-    if (i % 2 == 0)
-    {
-        Console.WriteLine(i);
-    }
-}
+//Path
+string Path = @"C:\Users\DELL\Documents\My Web Sites\Vocabulary.txt";
+string sentence = "Welcome to the file ready block.";
 
+File.WriteAllText(Path, sentence);
+var value = File.ReadAllText(Path);
+Console.WriteLine(value);
 
-string[] names = { "Genesis", "mathew", "exodus", "luke", "Samuel", "Mark", "Romans", "Titus", "Peter", "Jude", "Kings", "Ezekeil", "Moses", "Sarah", "Adam", "Eve", "Esther", "Obadiah", "Lamb", "Jesus" };
-foreach (string name in names)
-{
-    Console.WriteLine(name);
-}
+var val = Directory.GetParent(value);
+Console.WriteLine(val);
