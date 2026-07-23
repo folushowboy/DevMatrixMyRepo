@@ -12,5 +12,27 @@ namespace DevMatrixMyRepo
         public string StudentName { get; set; }
         public int StudentAge { get; set; }
 
+        public static void DisplayStudents(Queue<Student> student)
+        {
+            foreach(Student item in student)
+            {
+                Console.WriteLine(item.StudentName);
+            }
+        }
+
+        public static void DisplayStudentsgreaterthan18(Queue<Student> student)
+        {
+            foreach(Student item in student)
+            {
+                if (item.StudentAge >= 18)
+                {
+                    Console.WriteLine(item.StudentName);
+                }
+            }
+           
+        }
+
+
+
     }
 }

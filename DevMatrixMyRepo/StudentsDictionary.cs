@@ -10,8 +10,6 @@ namespace DevMatrixMyRepo
     {
         public static void StdsDictionary(Dictionary<int, string> Students)
         {
-            Students.Add(120, "Odusina"); //Add students to the list
-            Students.Remove(105); //Remove students
             //Find students
             foreach (var std in Students) //View all students in the list
             {
