@@ -1,17 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 
-for (int i = 0; i <= 20; i++)
-{
-    if (i % 2 == 0)
-    {
-        Console.WriteLine(i);
-    }
-}
+using DevMatrixMyRepo;
+
+List<Books> listOfBooks = new List<Books>();
+listOfBooks.Add(new Books { Title = "The Da Vinci Code", ISBN = 5, Author = "Dan Brown", YearPublished = 2003, AvailabilityStatus = "Available" });
+listOfBooks.Add(new Books { Title = "To Kill a Mockingbird", ISBN = 4, Author = "Harper Lee", YearPublished = 1960, AvailabilityStatus = "Borrowed" });
+listOfBooks.Add(new Books { Title = "1984", ISBN = 2, Author = "George Orwell", YearPublished = 1949, AvailabilityStatus = "Available" });
+listOfBooks.Add(new Books { Title = "The Hobbit", ISBN = 3, Author = "J.R.R. Tolkien", YearPublished = 1937, AvailabilityStatus = "Borrowed" });
+listOfBooks.Add(new Books { Title = "The Silent Patient", ISBN = 1, Author = "Alex Michaelides", YearPublished = 2019, AvailabilityStatus = "Available" });
+
+List<Borrowers> borrowers = new List<Borrowers>();
+borrowers.Add(new Borrowers { BorrowerID = 1, FullName = "Adedeji Emma", PhoneNumber = 09077867867, BorrowLimit = "2days" });
+borrowers.Add(new Borrowers { BorrowerID = 2, FullName = "Odusina Paul", PhoneNumber = 09047382959, BorrowLimit = "1days" });
+borrowers.Add(new Borrowers { BorrowerID = 3, FullName = "Nmerole John", PhoneNumber = 08076434578, BorrowLimit = "3days" });
+borrowers.Add(new Borrowers { BorrowerID = 4, FullName = "Anjola Eunice", PhoneNumber = 0906464747, BorrowLimit = "5days" });
+borrowers.Add(new Borrowers { BorrowerID = 5, FullName = "Enny Joy", PhoneNumber = 07066548392, BorrowLimit = "2days" });
 
 
-string[] names = { "Genesis", "mathew", "exodus", "luke", "Samuel", "Mark", "Romans", "Titus", "Peter", "Jude", "Kings", "Ezekeil", "Moses", "Sarah", "Adam", "Eve", "Esther", "Obadiah", "Lamb", "Jesus" };
-foreach (string name in names)
-{
-    Console.WriteLine(name);
-}
+
+Books.AddNewBooks(listOfBooks);
+Books.ViewAvailableBooks(listOfBooks);
+Books.SearchForABook(listOfBooks);
