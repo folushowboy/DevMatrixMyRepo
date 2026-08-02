@@ -15,11 +15,6 @@ namespace DevMatrixMyRepo
 
         //public List<Books> books { get; set; } = new List<Books>();
 
-        public static void BorrowABook(List<Borrowers> borrowbook, List<Books> books)
-        {
-            Console.WriteLine("Enter Tilte to borrow book");
-            string choice = Console.ReadLine();
-            //var booksToBorrow = borrowbook.FirstOrDefBorrowedBooksault(x => x.);
-        }
+       
     }
 }

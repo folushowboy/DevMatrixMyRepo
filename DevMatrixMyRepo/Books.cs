@@ -18,9 +18,9 @@ namespace DevMatrixMyRepo
         {
             Console.WriteLine("Add new books\n");
             books.Add(new Books { Title = "The Midnight Library", ISBN = 1, Author = "Matt Haig", YearPublished = 2020, AvailabilityStatus = "Available" });
-            books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = "Borrowed" });
+            books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = "Available" });
             books.Add(new Books { Title = "Pride and Prejudice", ISBN = 4 , Author = "Jane Austen", YearPublished = 2015, AvailabilityStatus = "Available" });
-            books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = "Borrowed" });   
+            books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = "Available" });   
 
             foreach(var book in books)
             {

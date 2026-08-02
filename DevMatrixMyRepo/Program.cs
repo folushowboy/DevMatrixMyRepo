@@ -5,9 +5,9 @@ using DevMatrixMyRepo;
 
 List<Books> listOfBooks = new List<Books>();
 listOfBooks.Add(new Books { Title = "The Da Vinci Code", ISBN = 5, Author = "Dan Brown", YearPublished = 2003, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "To Kill a Mockingbird", ISBN = 4, Author = "Harper Lee", YearPublished = 1960, AvailabilityStatus = "Borrowed" });
+listOfBooks.Add(new Books { Title = "To Kill a Mockingbird", ISBN = 4, Author = "Harper Lee", YearPublished = 1960, AvailabilityStatus = "Available" });
 listOfBooks.Add(new Books { Title = "1984", ISBN = 2, Author = "George Orwell", YearPublished = 1949, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "The Hobbit", ISBN = 3, Author = "J.R.R. Tolkien", YearPublished = 1937, AvailabilityStatus = "Borrowed" });
+listOfBooks.Add(new Books { Title = "The Hobbit", ISBN = 3, Author = "J.R.R. Tolkien", YearPublished = 1937, AvailabilityStatus = "Available" });
 listOfBooks.Add(new Books { Title = "The Silent Patient", ISBN = 1, Author = "Alex Michaelides", YearPublished = 2019, AvailabilityStatus = "Available" });
 
 List<Borrowers> borrowers = new List<Borrowers>();
@@ -22,3 +22,15 @@ borrowers.Add(new Borrowers { BorrowerID = 5, FullName = "Enny Joy", PhoneNumber
 Books.AddNewBooks(listOfBooks);
 Books.ViewAvailableBooks(listOfBooks);
 Books.SearchForABook(listOfBooks);
+
+
+static void BorrowABook(List<Borrowers> borrowbook, List<Books> books)
+{
+    Console.WriteLine("Enter Tilte to borrow book");
+    string choice = Console.ReadLine();
+    //var booksToBorrow = borrowbook.FirstOrDefault(x => x.);
+}
+
+var BorrowBook = from book in listOfBooks
+                 join borrow in borrowers on book.ISBN equals borrow.BorrowerID into bookBorrow
+                 from bookBorrow
