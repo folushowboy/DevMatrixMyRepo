@@ -33,4 +33,7 @@ static void BorrowABook(List<Borrowers> borrowbook, List<Books> books)
 
 var BorrowBook = from book in listOfBooks
                  join borrow in borrowers on book.ISBN equals borrow.BorrowerID into bookBorrow
-                 from bookBorrow
+                 from bookBorrow(book, borrowers)
+                 {
+
+                 }
