@@ -33,7 +33,16 @@ static void BorrowABook(List<Borrowers> borrowbook, List<Books> books)
 
 var BorrowBook = from book in listOfBooks
                  join borrow in borrowers on book.ISBN equals borrow.BorrowerID into bookBorrow
-                 from bookBorrow(book, borrowers)
+                 from 
                  {
 
                  }
+
+//from dept in empdept.DefaultIfEmpty()
+//select new
+//{
+//    emp.Name,
+//    emp.GenderIdentity,
+//    deptName = dept != null ? dept.Name : "No Department",
+//    Location = dept != null ? dept.Location : "No Location"
+//};
