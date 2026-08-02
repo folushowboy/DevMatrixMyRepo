@@ -4,11 +4,11 @@
 using DevMatrixMyRepo;
 
 List<Books> listOfBooks = new List<Books>();
-listOfBooks.Add(new Books { Title = "The Da Vinci Code", ISBN = 5, Author = "Dan Brown", YearPublished = 2003, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "To Kill a Mockingbird", ISBN = 4, Author = "Harper Lee", YearPublished = 1960, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "1984", ISBN = 2, Author = "George Orwell", YearPublished = 1949, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "The Hobbit", ISBN = 3, Author = "J.R.R. Tolkien", YearPublished = 1937, AvailabilityStatus = "Available" });
-listOfBooks.Add(new Books { Title = "The Silent Patient", ISBN = 1, Author = "Alex Michaelides", YearPublished = 2019, AvailabilityStatus = "Available" });
+listOfBooks.Add(new Books { Title = "The Da Vinci Code", ISBN = 5, Author = "Dan Brown", YearPublished = 2003, AvailabilityStatus = Avalaibility.Available });
+listOfBooks.Add(new Books { Title = "To Kill a Mockingbird", ISBN = 4, Author = "Harper Lee", YearPublished = 1960, AvailabilityStatus = Avalaibility.Available });
+listOfBooks.Add(new Books { Title = "1984", ISBN = 2, Author = "George Orwell", YearPublished = 1949, AvailabilityStatus = Avalaibility.Available });
+listOfBooks.Add(new Books { Title = "The Hobbit", ISBN = 3, Author = "J.R.R. Tolkien", YearPublished = 1937, AvailabilityStatus = Avalaibility.Available });
+listOfBooks.Add(new Books { Title = "The Silent Patient", ISBN = 1, Author = "Alex Michaelides", YearPublished = 2019, AvailabilityStatus = Avalaibility.Available });
 
 List<Borrowers> borrowers = new List<Borrowers>();
 borrowers.Add(new Borrowers { BorrowerID = 1, FullName = "Adedeji Emma", PhoneNumber = 09077867867, BorrowLimit = "2days" });
@@ -24,25 +24,24 @@ Books.ViewAvailableBooks(listOfBooks);
 Books.SearchForABook(listOfBooks);
 
 
-static void BorrowABook(List<Borrowers> borrowbook, List<Books> books)
+static void BorrowABook(List<Borrowers> borrows, List<Books> books)
 {
     Console.WriteLine("Enter Tilte to borrow book");
     string choice = Console.ReadLine();
     //var booksToBorrow = borrowbook.FirstOrDefault(x => x.);
+    var BorrowBook = from book in books
+                     join borrow in borrows on book.ISBN equals borrow.BorrowerID into bookBorrow
+                     from borrow in bookBorrow.DefaultIfEmpty()
+                     select new
+                     {
+                         book.Title,
+                         borrow.FullName,
+                         availability = book.AvailabilityStatus == Avalaibility.Available ? "Available" : "Borrowed"
+                     };
+    foreach (var BB in BorrowBook)
+    {
+        Console.WriteLine($"{BB.Title} has been borrowed by {BB.FullName}");
+    }
 }
 
-var BorrowBook = from book in listOfBooks
-                 join borrow in borrowers on book.ISBN equals borrow.BorrowerID into bookBorrow
-                 from 
-                 {
 
-                 }
-
-//from dept in empdept.DefaultIfEmpty()
-//select new
-//{
-//    emp.Name,
-//    emp.GenderIdentity,
-//    deptName = dept != null ? dept.Name : "No Department",
-//    Location = dept != null ? dept.Location : "No Location"
-//};

@@ -6,21 +6,26 @@ using System.Threading.Tasks;
 
 namespace DevMatrixMyRepo
 {
+    public enum Avalaibility
+    {
+        Available
+    }
+
     internal class Books
     {
         public int ISBN {  get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public int YearPublished { get; set; }
-        public string AvailabilityStatus { get; set; }
+        public Avalaibility AvailabilityStatus { get; set; }
 
         public static void AddNewBooks(List<Books> books)
         {
             Console.WriteLine("Add new books\n");
-            books.Add(new Books { Title = "The Midnight Library", ISBN = 1, Author = "Matt Haig", YearPublished = 2020, AvailabilityStatus = "Available" });
-            books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = "Available" });
-            books.Add(new Books { Title = "Pride and Prejudice", ISBN = 4 , Author = "Jane Austen", YearPublished = 2015, AvailabilityStatus = "Available" });
-            books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = "Available" });   
+            books.Add(new Books { Title = "The Midnight Library", ISBN = 1, Author = "Matt Haig", YearPublished = 2020, AvailabilityStatus = Avalaibility.Available });
+            books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = Avalaibility.Available });
+            books.Add(new Books { Title = "Pride and Prejudice", ISBN = 4 , Author = "Jane Austen", YearPublished = 2015, AvailabilityStatus = Avalaibility.Available });
+            books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = Avalaibility.Available });   
 
             foreach(var book in books)
             {
@@ -33,7 +38,7 @@ namespace DevMatrixMyRepo
             Console.WriteLine("\nAvailable books\n");
             foreach (Books book in books)
             {
-                if (book.AvailabilityStatus != "Borrowed")
+                if (book.AvailabilityStatus == Avalaibility.Available)
                 {
                     Console.WriteLine($"The available Books: {book.Title}, {book.Author}, {book.AvailabilityStatus}");
                 }
@@ -64,7 +69,7 @@ namespace DevMatrixMyRepo
                     if ((book.Author.ToLower().Contains(choice) || book.Title.ToLower().Contains(choice)))
                     {
                         found = true;
-                        if (book.AvailabilityStatus == "Available")
+                        if (book.AvailabilityStatus == Avalaibility.Available)
                         {
                             Console.WriteLine($"Book Found: {book.Title}, {book.Author}, {book.AvailabilityStatus}");
                         }
