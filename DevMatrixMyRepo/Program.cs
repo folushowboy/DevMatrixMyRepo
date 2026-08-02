@@ -20,27 +20,58 @@ borrowers.Add(new Borrowers { BorrowerID = 5, FullName = "Enny Joy", PhoneNumber
 
 
 Books.AddNewBooks(listOfBooks);
-Books.ViewAvailableBooks(listOfBooks);
-Books.SearchForABook(listOfBooks);
-
+//Books.ViewAvailableBooks(listOfBooks);
+//Books.SearchForABook(listOfBooks);
+BorrowABook(borrowers, listOfBooks);
 
 static void BorrowABook(List<Borrowers> borrows, List<Books> books)
 {
     Console.WriteLine("Enter Tilte to borrow book");
-    string choice = Console.ReadLine();
+    //string choice = Console.ReadLine();
     //var booksToBorrow = borrowbook.FirstOrDefault(x => x.);
-    var BorrowBook = from book in books
-                     join borrow in borrows on book.ISBN equals borrow.BorrowerID into bookBorrow
-                     from borrow in bookBorrow.DefaultIfEmpty()
-                     select new
-                     {
-                         book.Title,
-                         borrow.FullName,
-                         availability = book.AvailabilityStatus == Avalaibility.Available ? "Available" : "Borrowed"
-                     };
-    foreach (var BB in BorrowBook)
+   
+    while (true)
     {
-        Console.WriteLine($"{BB.Title} has been borrowed by {BB.FullName}");
+        Console.WriteLine("\nBorrow a book");
+        Console.Write("Enter title or author: ");
+
+        string choice = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(choice))
+        {
+            Console.WriteLine("Invalid input. Please try again.\n");
+            continue;
+        }
+
+        bool found = false;
+
+        foreach (Books bk in books)
+        {
+            if ((bk.Author.ToLower().Contains(choice) || bk.Title.ToLower().Contains(choice)))
+            {
+                found = true;
+                var BorrowBook = from book in books
+                                 join borrow in borrows on book.ISBN equals borrow.BorrowerID into bookBorrow
+                                 from borrow in bookBorrow.DefaultIfEmpty()
+                                 select new
+                                 {
+                                     book.Title,
+                                     borrow.FullName,
+                                     availability = book.AvailabilityStatus == Avalaibility.Available ? "Available" : "Borrowed"
+                                 };
+                foreach (var BB in BorrowBook)
+                {
+                    Console.WriteLine($"{BB.Title} has been borrowed by {BB.FullName}");
+                }
+
+            }
+        }
+        if (!found)
+        {
+            Console.WriteLine("No book matches your search.");
+            continue;
+        }
+        break;
     }
 }
 
