@@ -8,10 +8,11 @@ namespace DevMatrixMyRepo
 {
     public enum Avalaibility
     {
-        Available
+        Available,
+        Borrowed
     }
 
-    internal class Books
+    public class Books
     {
         public int ISBN {  get; set; }
         public string Title { get; set; }
@@ -21,11 +22,42 @@ namespace DevMatrixMyRepo
 
         public static void AddNewBooks(List<Books> books)
         {
-            Console.WriteLine("Add new books\n");
-            books.Add(new Books { Title = "The Midnight Library", ISBN = 1, Author = "Matt Haig", YearPublished = 2020, AvailabilityStatus = Avalaibility.Available });
-            books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = Avalaibility.Available });
-            books.Add(new Books { Title = "Pride and Prejudice", ISBN = 4 , Author = "Jane Austen", YearPublished = 2015, AvailabilityStatus = Avalaibility.Available });
-            books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = Avalaibility.Available });   
+            Console.WriteLine("\nAdd new books");
+            Console.Write("Enter Book Title: ");
+            var title = Console.ReadLine();
+            Console.Write("Enter ISBN: ");
+            if(!int.TryParse(Console.ReadLine(), out int isbn))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid ISBN.");
+                return;
+            }
+            Console.Write("Enter Author: ");
+            var author = Console.ReadLine();
+            Console.Write("Enter Year Published: ");
+            if (!int.TryParse(Console.ReadLine(), out int yearPublished))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid ISBN.");
+                return;
+            }
+            Console.Write("Enter Status: ");
+            var AvailabilityStatus = Console.ReadLine();
+
+            Books addNewBook = new Books
+            {
+                Title = title,
+                ISBN = isbn,
+                Author = author,
+                YearPublished = yearPublished,
+                AvailabilityStatus = Avalaibility.Available
+            };
+
+            books.Add(addNewBook);
+            Console.WriteLine("\nBook added successfully!\n");
+
+            //books.Add(new Books { Title = "The Midnight Library", ISBN = 1, Author = "Matt Haig", YearPublished = 2020, AvailabilityStatus = Avalaibility.Available });
+            //books.Add(new Books { Title = "Atomic Habits", ISBN = 2, Author = "James Clear", YearPublished = 2002, AvailabilityStatus = Avalaibility.Available });
+            //books.Add(new Books { Title = "Pride and Prejudice", ISBN = 4 , Author = "Jane Austen", YearPublished = 2015, AvailabilityStatus = Avalaibility.Available });
+            //books.Add(new Books { Title = "The Alchemist", ISBN = 3, Author = "Matt Haig", YearPublished = 1813, AvailabilityStatus = Avalaibility.Available });   
 
             foreach(var book in books)
             {

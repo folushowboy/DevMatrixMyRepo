@@ -13,8 +13,15 @@ namespace DevMatrixMyRepo
         public long PhoneNumber { get; set; }
         public string BorrowLimit { get; set; }
 
-        //public List<Books> books { get; set; } = new List<Books>();
+        public static void ViewBorrowedBooks(List<Books> borrowedBooks)
+        {
+            Console.WriteLine("\nList of Borrowed Books\n");
+            foreach (Books BB in borrowedBooks)
+            {
+                Console.WriteLine($"Title: {BB.Title}, Author: {BB.Author} is borrowed by ");
+            }
+        }
 
-       
+
     }
 }

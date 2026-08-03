@@ -17,20 +17,25 @@ borrowers.Add(new Borrowers { BorrowerID = 3, FullName = "Nmerole John", PhoneNu
 borrowers.Add(new Borrowers { BorrowerID = 4, FullName = "Anjola Eunice", PhoneNumber = 0906464747, BorrowLimit = "5days" });
 borrowers.Add(new Borrowers { BorrowerID = 5, FullName = "Enny Joy", PhoneNumber = 07066548392, BorrowLimit = "2days" });
 
+List<Books> borrowedBooks = new List<Books>();
 
 
+Books.ViewAvailableBooks(listOfBooks);
 Books.AddNewBooks(listOfBooks);
-//Books.ViewAvailableBooks(listOfBooks);
-//Books.SearchForABook(listOfBooks);
+Books.ViewAvailableBooks(listOfBooks);
+Books.SearchForABook(listOfBooks);
 BorrowABook(borrowers, listOfBooks);
+Books.ViewAvailableBooks(listOfBooks);
+ReturnABook(borrowers, borrowedBooks, listOfBooks);
+Books.ViewAvailableBooks(listOfBooks);
+Borrowers.ViewBorrowedBooks(borrowedBooks);
 
-static void BorrowABook(List<Borrowers> borrows, List<Books> books)
+
+void BorrowABook(List<Borrowers> borrows, List<Books> books)
 {
-    Console.WriteLine("Enter Tilte to borrow book");
-    //string choice = Console.ReadLine();
-    //var booksToBorrow = borrowbook.FirstOrDefault(x => x.);
-   
-    while (true)
+    Console.WriteLine("\nEnter Title to borrow book");
+    string borrowMore = "Y";
+    while (borrowMore == "Y")
     {
         Console.WriteLine("\nBorrow a book");
         Console.Write("Enter title or author: ");
@@ -42,37 +47,110 @@ static void BorrowABook(List<Borrowers> borrows, List<Books> books)
             Console.WriteLine("Invalid input. Please try again.\n");
             continue;
         }
-
+        Books bookToBorrow = null;
         bool found = false;
+        //bookToBorrow.AvailabilityStatus = Avalaibility.Borrowed;
 
         foreach (Books bk in books)
         {
             if ((bk.Author.ToLower().Contains(choice) || bk.Title.ToLower().Contains(choice)))
             {
                 found = true;
+                bookToBorrow = bk;
+
                 var BorrowBook = from book in books
+                                 where book.ISBN == bk.ISBN
                                  join borrow in borrows on book.ISBN equals borrow.BorrowerID into bookBorrow
                                  from borrow in bookBorrow.DefaultIfEmpty()
                                  select new
                                  {
                                      book.Title,
                                      borrow.FullName,
-                                     availability = book.AvailabilityStatus == Avalaibility.Available ? "Available" : "Borrowed"
                                  };
+                
                 foreach (var BB in BorrowBook)
                 {
                     Console.WriteLine($"{BB.Title} has been borrowed by {BB.FullName}");
                 }
-
             }
+            
         }
         if (!found)
         {
             Console.WriteLine("No book matches your search.");
             continue;
         }
-        break;
+        if (bookToBorrow != null)
+        {
+            borrowedBooks.Add(bookToBorrow);
+            books.Remove(bookToBorrow);
+        }
+        
+        Console.WriteLine("Do you want to borrow another book? (Y/N)");
+        borrowMore = Console.ReadLine().ToUpper();
+        //break;
+        Console.WriteLine($"Borrowed Books Count: {borrowedBooks.Count}");
+
     }
 }
 
 
+void ReturnABook(List<Borrowers> returned, List<Books> borrowedBooks, List<Books> books)
+{
+    Console.WriteLine("\nEnter Title to borrow book");
+    string borrowMore = "Y";
+    while (borrowMore == "Y")
+    {
+        Console.WriteLine("\nReturn a book");
+        Console.Write("Enter title or author: ");
+
+        string choice = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(choice))
+        {
+            Console.WriteLine("Invalid input. Please try again.\n");
+            continue;
+        }
+        Books bookToReturn = null;
+        bool found = false;
+
+        foreach (Books bk in borrowedBooks)
+        {
+            if ((bk.Author.ToLower().Contains(choice) || bk.Title.ToLower().Contains(choice)))
+            {
+                found = true;
+                bookToReturn = bk;
+
+                var ReturnBook = from book in borrowedBooks
+                                 where book.ISBN == bk.ISBN
+                                 join returns in returned on book.ISBN equals returns.BorrowerID into bookReturn
+                                 from returns in bookReturn.DefaultIfEmpty()
+                                 select new
+                                 {
+                                     book.Title,
+                                     returns.FullName,
+                                 };
+
+                foreach (var BB in ReturnBook)
+                {
+                    Console.WriteLine($"{BB.Title} has been return by {BB.FullName}");
+                }
+            }
+
+        }
+        if (!found)
+        {
+            Console.WriteLine("No book matches your search.");
+            continue;
+        }
+        
+        if (bookToReturn != null)
+        {
+            borrowedBooks.Remove(bookToReturn);
+            books.Add(bookToReturn);
+        }
+        Console.WriteLine("Do you want to borrow another book? (Y/N)");
+        borrowMore = Console.ReadLine().ToUpper();
+        //break;
+    }
+}
